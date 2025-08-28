@@ -81,8 +81,9 @@ const handleSubmit = async () => {
     formData.append('eye', photos[1].file);
 
     // Use your backend URL
+    // http://127.0.0.1:8000/predict
     const res = await axios.post(
-      'https://jaundice-backend-6ve2.onrender.com/predict',
+      'https://jaundice-prediction.onrender.com/predict',
       formData,
       {
         headers: { 'Content-Type': 'multipart/form-data' },
