@@ -68,34 +68,41 @@ function PredictForm() {
   };
 
   // Submit to backend
-  const handleSubmit = async () => {
-    if (photos.length !== 2) {
-      alert('Please provide both a face and an eye photo.');
-      return;
-    }
+  // Submit to backend
+const handleSubmit = async () => {
+  if (photos.length !== 2) {
+    alert('Please provide both a face and an eye photo.');
+    return;
+  }
 
-    try {
-      const formData = new FormData();
-      formData.append('face', photos[0].file);
-      formData.append('eye', photos[1].file);
+  try {
+    const formData = new FormData();
+    formData.append('face', photos[0].file);
+    formData.append('eye', photos[1].file);
 
-      const res = await axios.post('http://127.0.0.1:8000/predict', formData, {
+    // Use your backend URL
+    const res = await axios.post(
+      'https://jaundice-backend-6ve2.onrender.com/predict',
+      formData,
+      {
         headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      }
+    );
 
-      const { severity_class, severity_percent } = res.data;
+    const { severity_class, severity_percent } = res.data;
 
-      navigate('/result', {
-        state: {
-          severity: severity_class,
-          percentage: severity_percent,
-        },
-      });
-    } catch (error) {
-      console.error(error);
-      alert('Prediction failed. Please try again.');
-    }
-  };
+    navigate('/result', {
+      state: {
+        severity: severity_class,
+        percentage: severity_percent,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    alert('Prediction failed. Please try again.');
+  }
+};
+
 
   return (
     <div style={{ maxWidth: 500, margin: '20px auto', fontFamily: 'Arial, sans-serif' }}>
