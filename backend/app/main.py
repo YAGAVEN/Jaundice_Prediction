@@ -5,7 +5,7 @@ from app.model import predict_jaundice
 
 app = FastAPI()
 
-
+#  http://localhost:5173
 
 app.add_middleware(
     CORSMiddleware,
