@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 import shutil, os, uuid
-from model import predict_jaundice
+from app.model import predict_jaundice
 
 app = FastAPI()
 
