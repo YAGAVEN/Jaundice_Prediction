@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Replace with your frontend URL in production
+    allow_origins=["https://jaundice-prediction.vercel.app"],  # Replace with your frontend URL in production
     allow_methods=["*"],
     allow_headers=["*"],
 )
